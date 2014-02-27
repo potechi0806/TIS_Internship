@@ -1,0 +1,27 @@
+﻿2014/02/27 17:52:50 にビルドを開始しました。
+     1>ノード 2 上のプロジェクト "C:\Users\kurratalab\Documents\GitHub\TIS_Intehnship\no1\no4\no4\no4.vcxproj" (build ターゲット)。
+     1>InitializeBuildStatus:
+         "AlwaysCreate" が指定されたため "Debug\no4.unsuccessfulbuild" を作成しています。
+       ClCompile:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>c:\users\kurratalab\documents\github\tis_intehnship\no1\no4\no4\main.cpp(10): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(304) : 'scanf' の宣言を確認してください。
+     1>c:\users\kurratalab\documents\github\tis_intehnship\no1\no4\no4\main.cpp(13): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(304) : 'scanf' の宣言を確認してください。
+     1>c:\users\kurratalab\documents\github\tis_intehnship\no1\no4\no4\main.cpp(16): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(304) : 'scanf' の宣言を確認してください。
+       Link:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\kurratalab\Documents\GitHub\TIS_Intehnship\no1\no4\Debug\no4.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\no4.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\kurratalab\Documents\GitHub\TIS_Intehnship\no1\no4\Debug\no4.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\kurratalab\Documents\GitHub\TIS_Intehnship\no1\no4\Debug\no4.lib" /MACHINE:X86 Debug\main.obj
+         LINK : 前回のインクリメンタル リンクで C:\Users\kurratalab\Documents\GitHub\TIS_Intehnship\no1\no4\Debug\no4.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
+         no4.vcxproj -> C:\Users\kurratalab\Documents\GitHub\TIS_Intehnship\no1\no4\Debug\no4.exe
+       Manifest:
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\kurratalab\Documents\GitHub\TIS_Intehnship\no1\no4\Debug\no4.exe;#1" /manifest Debug\no4.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         ファイル "Debug\no4.unsuccessfulbuild" を削除しています。
+         "Debug\no4.lastbuildstate" のタッチ タスクを実行しています。
+     1>プロジェクト "C:\Users\kurratalab\Documents\GitHub\TIS_Intehnship\no1\no4\no4\no4.vcxproj" (build ターゲット) のビルドが完了しました。
+
+ビルドに成功しました。
+
+経過時間 00:00:01.36
