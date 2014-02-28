@@ -27,7 +27,8 @@ void setFitness(double SearchRegion[][2+1], Chromosome *chrom, int n)
 
 	x=vector(1,n);
 	decodeGene2Variable(SearchRegion,chrom,x,n);//探索範囲調整
-
+	SearchRegion[5][1]=20;
+	SearchRegion[5][2]=50;
 	R=abs(x[5]);
 
 	for(i=1;i<=3;i++){
@@ -40,104 +41,182 @@ void setFitness(double SearchRegion[][2+1], Chromosome *chrom, int n)
 	for(i=1;i<=2;i++){
 		for(j=1;j<=36;j++){
 			zahyouX[i][j]=x[2*i-1]+R*sin(10*j*3.14/180);//スプリンクラーの円周の座標x
-			zahyouY[i][j]=x[2*i]+R*cos(10*j*3.14/180);//スプリンクラーの円周の座標x
+			zahyouY[i][j]=x[2*i]+R*cos(10*j*3.14/180);//スプリンクラーの円周の座標y
+
 		}
 	}
 
 	//条件を満たしているか
 	count=0;
 	flagcount=0;
+
 	for(i=1;i<=3;i++){
 		for(j=1;j<=36;j++){
 
 			if(j<=9){//0<theata<=90: x>X,y>Y
-			if(zahyouX[1][j]>=zahyoux[i][j]|| zahyouX[2][j]>=zahyoux[i][j]){
-				if(zahyouY[1][j]>=zahyouy[i][j] || zahyouY[2][j]>=zahyouy[i][j]){
-					count++;
-					Fitness=10;
-					if(count==9*3){
-						flagcount=1;}
+				if(zahyouX[1][j]>=zahyoux[i][j]){
+					if(zahyouY[1][j]>=zahyouy[i][j]){
+						count++;
+						Fitness=1;
+					}
+					else{
+						Fitness+=10;
+						flag=0;
+					}
 				}
 				else{
-					Fitness=100;
+					Fitness+=100;
 					flag=0;
 				}
-			}
-			else{
-				Fitness=1000;
-				flag=0;
-			}
 			}
 
 			if(j>9 && j<=18){//90<theata<=180: x<X,y>Y
-			if(zahyouX[1][j]<=zahyoux[i][j]|| zahyouX[2][j]<=zahyoux[i][j]){
-				if(zahyouY[1][j]>=zahyouy[i][j] || zahyouY[2][j]>=zahyouy[i][j]){
-					count++;
-					Fitness=10;
-					if(count==9*3*2){
-						flagcount=2;}
+				if(zahyouX[1][j]<=zahyoux[i][j]){
+					if(zahyouY[1][j]>=zahyouy[i][j]){
+						count++;
+						Fitness=1;
+					}
+					else{
+						Fitness+=10;
+						flag=0;
+					}
 				}
 				else{
-					Fitness=100;
+					Fitness+=100;
 					flag=0;
 				}
-			}
-			else{
-				Fitness=1000;
-				flag=0;
-			}
 			}
 
 			if(j>18 && j<=27){//180<theata<=270: x<X,y<Y
-			if(zahyouX[1][j]<=zahyoux[i][j]|| zahyouX[2][j]<=zahyoux[i][j]){
-				if(zahyouY[1][j]<=zahyouy[i][j] || zahyouY[2][j]<=zahyouy[i][j]){
-					count++;
-					Fitness=10;
-					if(count==9*3*3){
-						flagcount=3;}
+				if(zahyouX[1][j]<=zahyoux[i][j]){
+					if(zahyouY[1][j]<=zahyouy[i][j]){
+						count++;
+						Fitness=1;
+					}
+					else{
+						Fitness+=10;
+						flag=0;
+					}
+				}
+				else{
+					Fitness+=100;
+					flag=0;
+				}
+			}
+
+
+			if(j>27){//270<theata<=360: x>X,y<Y
+				if(zahyouX[1][j]>=zahyoux[i][j]){
+					if(zahyouY[1][j]<=zahyouy[i][j]){
+						count++;
+						Fitness+=1;
+						if(count==9*3*4){
+							flag=1;
+						goto next;}
+					}
+					else{
+						Fitness=10;
+						flag=0;
+					}
 				}
 				else{
 					Fitness=100;
 					flag=0;
 				}
 			}
-			else{
-				Fitness=1000;
-				flag=0;
-			}
+
+			////////////////////////////////////////////////////////////////////
+			if(flag==0){
+				if(j<=9){//0<theata<=90: x>X,y>Y
+					if(zahyouX[2][j]>=zahyoux[i][j]){
+						if(zahyouY[2][j]>=zahyouy[i][j]){
+							count++;
+							Fitness+=1;
+						}
+						else{
+							Fitness+=10;
+							flag=0;
+						}
+					}
+					else{
+						Fitness+=100;
+						flag=0;
+					}
+				}
+
+				if(j>9 && j<=18){//90<theata<=180: x<X,y>Y
+					if(zahyouX[2][j]<=zahyoux[i][j]){
+						if(zahyouY[2][j]>=zahyouy[i][j]){
+							count++;
+							Fitness+=1;
+						}
+						else{
+							Fitness+=10;
+							flag=0;
+						}
+					}
+					else{
+						Fitness+=100;
+						flag=0;
+					}
+				}
+
+				if(j>18 && j<=27){//180<theata<=270: x<X,y<Y
+					if(zahyouX[2][j]<=zahyoux[i][j]){
+						if(zahyouY[2][j]<=zahyouy[i][j]){
+							count++;
+							Fitness+=1;
+						}
+						else{
+							Fitness+=10;
+							flag=0;
+						}
+					}
+					else{
+						Fitness+=100;
+						flag=0;
+					}
+				}
+
+
+				if(j>27){//270<theata<=360: x>X,y<Y
+					if(zahyouX[2][j]>=zahyoux[i][j]){
+						if(zahyouY[2][j]<=zahyouy[i][j]){
+							count++;
+							Fitness+=1;
+						}
+						else{
+							Fitness+=10;
+							flag=0;
+						}
+					}
+					else{
+						Fitness+=100;
+						flag=0;
+					}
+				}
 			}
 
 
-			if(j<27){//270<theata<=360: x>X,y<Y
-			if(zahyouX[1][j]>=zahyoux[i][j]|| zahyouX[2][j]>=zahyoux[i][j]){
-				if(zahyouY[1][j]<=zahyouy[i][j] || zahyouY[2][j]<=zahyouy[i][j]){
-					count++;
-					Fitness=10;
-					if(count==9*3*4 && flagcount==3){
-						flag=1;}
-				}
-				else{
-					Fitness=100;
-					flag=0;
-				}
-			}
-			else{
-				Fitness=1000;
-				flag=0;
-			}
-			}
 		}
 	}
 
+	if(count>=10){
+		flag=1;}
 
-
+next:
 	if(flag==1){
 		Fitness=0;
 		Fitness=R;
+//		for(i=1;i<=2;i++){
+	//		for(j=1;j<=36;j++){
+		//		printf("%lf\t%lf\n",zahyouX[i][j],zahyouY[i][j]);
+			//}
+		//}
 	}
 
 
-next:
+
 	free_vector(x,1,n);
 	chrom->fitness=Fitness;
 	n_evaluation++;
@@ -154,10 +233,11 @@ void setSearchRegion(double SearchRegion[][2+1])
 
 	//// Sphere /////////
 	for(i=1;i<=N_GENE;i++){
-		SearchRegion[i][1]=5;
+		SearchRegion[i][1]=0;
 		SearchRegion[i][2]=100;
 	}
+
 	////////////////////////
 
-	
+
 }

@@ -33,9 +33,9 @@ Chromosome GA(double SearchRegion[][2+1])
 		if(i%100==0){
 			printf("%d: Best Fitness= %e\n",i,Individual[1].fitness);
 			for(j=1;j<=5;j++){
-					x[j]=Individual[1].gene[1]*(50-5)+5;
+					x[j]=Individual[1].gene[j]*(50-0)+0;
 				}
-			printf("(x,y)=(%lf,%lf),(%lf,%lf)\n",x[1],x[2],x[3],x[4]);
+			printf("(x,y)=(%lf,%lf),(%lf,%lf)\tR=%lf\n",x[1],x[2],x[3],x[4],x[5]);
 		}
 
 		writeTransition(i,&Individual[1],SearchRegion,N_GENE);//ファイル出力

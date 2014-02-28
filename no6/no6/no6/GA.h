@@ -3,10 +3,10 @@
 #define N_GENE 5 // Number of variables // Rosenbrock, Rastriginなら100、g01なら13、g02なら20
 #define IDUM -1 // Seed of ran2 and gasdev // ここを変えて５回実行。負の値ならなんでもよい。
 
-#define N_GENERATION 1000 // 最大世代数
+#define N_GENERATION 1000000 // 最大世代数
 #define N_POPULATION 200 // 集団サイズ
 #define N_CHILDREN 200 // Number of children in MGG
-#define ALLOWABLE_ERROR  -1e+10 // 今回は適合度による探索打ち切りを行わないので十分に小さい値を入れておく
+#define ALLOWABLE_ERROR  7 // 今回は適合度による探索打ち切りを行わないので十分に小さい値を入れておく
 
 #define OUT_SOLUTION "solution.dat" // 最良の個体の出力ファイル名
 #define OUT_TRANSITION "transition.dat" // 適合度の遷移の出力ファイル名
